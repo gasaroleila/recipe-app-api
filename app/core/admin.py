@@ -47,3 +47,4 @@ class UserAdmin(BaseUserAdmin):
     readonly_fields = ['last_login']
 
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Recipe)

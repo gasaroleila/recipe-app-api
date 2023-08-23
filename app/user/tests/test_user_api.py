@@ -1,5 +1,5 @@
 """
- Test user api
+ Test user API
 """
 
 from django.test import TestCase
@@ -140,7 +140,7 @@ class PrivateUserApiTest(TestCase):
 
         res = self.client.get(ME_URL)
 
-        self.assertEqual(res.status_code, status.HTTPS_200_OK)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, {
             'name': self.user.name,
             'email': self.user.email,
@@ -162,7 +162,7 @@ class PrivateUserApiTest(TestCase):
         }
 
         res = self.client.patch(ME_URL, payload)
-        self.user.refresh_db()
+        self.user.refresh_from_db()
 
         self.assertEqual(self.user.name, payload['name'])
         self.assertTrue(self.user.check_password(payload['password']))
